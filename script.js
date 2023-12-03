@@ -1,82 +1,36 @@
-//
-//  JS File
-//  YOU CAN REMOVE ALL OF THIS CODE AND START FRESH
-//
+const kitty = document.getElementById("kitty");
+const bush = document.getElementById("bush");
 
-//
-// Variables
-//
+function jump() {
+  if (!kitty.classList.contains("jump")) {
+    kitty.classList.add("jump");
+    kitty.style.top = "-100px"; // Adjust the jump height as needed
 
-// Constants
-const appID = "app";
-const headingText = "Develop. Preview. Ship.";
-const headingTextIcon = "🚀";
-const projectDueDate = "8 December 2023 11:59";
-
-// Variables
-let countdownDate = new Date(projectDueDate);
-
-// DOM Elements
-let appContainer = document.getElementById(appID);
-
-//
-// Functions
-//
-
-function calculateDaysLeft(countdownDate) {
-  const now = new Date().getTime();
-  const countdown = new Date(countdownDate).getTime();
-
-  console.log(countdown);
-
-  const difference = (countdown - now) / 1000;
-
-
-  // Countdown passed already
-  if (difference < 1) {
-    return null;
+    setTimeout(function () {
+      kitty.style.top = "0";
+      kitty.classList.remove("jump");
+    }, 300);
   }
-
-
-  const days = Math.floor(difference / (60 * 60 * 24));
-
-  return days;
 }
 
-// Add a heading to the app container
-function inititialise() {
-  // If anything is wrong with the app container then end
-  if (!appContainer) {
-    console.error("Error: Could not find app contianer");
-    return;
+let isAlive = setInterval(function () {
+  // get current kitty Y position
+  let kittyTop = parseInt(window.getComputedStyle(kitty).getPropertyValue("top"));
+
+  // get current bush X position
+  let bushLeft = parseInt(
+    window.getComputedStyle(bush).getPropertyValue("left")
+  );
+
+  // detect collision
+  if (bushLeft < 50 && bushLeft > 0 && kittyTop >= 140) {
+    // collision
+    alert("Game Over!");
   }
+}, 10);
 
-  // Create an h1 and add it to our app
-  const h1 = document.createElement("h1");
-  const daysLeft = calculateDaysLeft(countdownDate);
-  let headingTextCalculated = headingText;
-
-  if (daysLeft > 1) {
-    headingTextCalculated = headingTextCalculated.concat(
-      " In ",
-      daysLeft.toString(),
-      " days "
-    );
-  }else if (daysLeft === 1) {
-    headingTextCalculated = headingTextCalculated.concat(
-      " Tomorrow"
-    );
+document.addEventListener("keydown", function (event) {
+  if (event.code === "Space") {
+    jump();
   }
-
-  h1.textContent = headingTextCalculated.concat(headingTextIcon);
-  appContainer.appendChild(h1);
-
-  // Init complete
-  console.log("App successfully initialised");
-}
-
-//
-// Inits & Event Listeners
-//
-
-inititialise();
+}); 
