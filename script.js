@@ -1,35 +1,36 @@
-const dino = document.getElementById("dino");
-const cactus = document.getElementById("cactus");
+const kitty = document.getElementById("kitty");
+  const bush = document.getElementById("bush");
 
-function jump() {
-  if (!dino.classList.contains("jump")) {
-    dino.classList.add("jump");
+  function jump() {
+    if (!kitty.classList.contains("jump")) {
+      kitty.classList.add("jump");
+      kitty.style.top = "-100px"; // Adjust the jump height as needed
 
-    setTimeout(function () {
-      dino.classList.remove("jump");
-    }, 300);
+      setTimeout(function () {
+        kitty.style.top = "0";
+        kitty.classList.remove("jump");
+      }, 300);
+    }
   }
-}
 
-let isAlive = setInterval(function () {
-  // get current dino Y position
-  let dinoTop = parseInt(window.getComputedStyle(dino).getPropertyValue("bottom"));
+  let isAlive = setInterval(function () {
+    // get current kitty Y position
+    let kittyTop = parseInt(window.getComputedStyle(kitty).getPropertyValue("top"));
 
-  // get current cactus X position
-  let cactusLeft = parseInt(
-    window.getComputedStyle(cactus).getPropertyValue("right")
-  );
+    // get current bush X position
+    let bushLeft = parseInt(
+      window.getComputedStyle(bush).getPropertyValue("left")
+    );
 
-  // detect collision
-  if (cactusLeft < 50 && cactusLeft > 0 && dinoTop >= 140) {
-    // collision
-    alert("Game Over!");
-    clearInterval(isAlive); // Stop checking for collisions
-  }
-}, 10);
+    // detect collision
+    if (bushLeft < 50 && bushLeft > 0 && kittyTop >= 140) {
+      // collision
+      alert("Game Over!");
+    }
+  }, 10);
 
-document.addEventListener("keydown", function (event) {
-  if (event.code === "Space") { // Check if the pressed key is Space
-    jump();
-  }
-});
+  document.addEventListener("keydown", function (event) {
+    if (event.code === "Space") {
+      jump();
+    }
+  });
