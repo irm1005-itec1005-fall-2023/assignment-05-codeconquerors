@@ -1,79 +1,79 @@
 .game {
-  width: 600px;
-  height: 200px;
-  border: 1px solid black;
-  margin: auto;
-}
+    width: 600px;
+    height: 200px;
+    border: 1px solid black;
+    margin: auto;
+  }
 
-#kitty {
-  width: 50px;
-  height: 50px;
-  background-image: url(images/favicon/kittywalk2.PNG);
-  background-size: 50px 50px;
-  position: relative;
-  top: 150px;
-}
-
-.jump {
-  animation: jump 0.3s linear;
-}
-
-@keyframes jump {
-  0% {
+  #kitty {
+    width: 50px;
+    height: 50px;
+    background-image: url(images/favicon/kittywalk1.PNG);
+    background-size: 50px 50px;
+    position: relative;
     top: 150px;
   }
 
-  30% {
-    top: 130px;
+  .jump {
+    animation: jump 0.3s linear;
   }
 
-  50% {
-    top: 80px;
+  @keyframes jump {
+    0% {
+      top: 150px;
+    }
+
+    30% {
+      top: 130px;
+    }
+
+    50% {
+      top: 80px;
+    }
+
+    80% {
+      top: 130px;
+    }
+
+    100% {
+      top: 150px;
+    }
   }
 
-  80% {
-    top: 130px;
-  }
-
-  100% {
-    top: 150px;
-  }
-}
-
-#bush {
-  width: 20px;
-  height: 40px;
-  position: relative;
-  top: 110px;
-  left: 580px;
-
-  background-image: url("images/favicon/bush\ 1.jpg");
-  background-size: 20px 40px;
-
-  animation: block 1s infinite linear;
-}
-
-@keyframes block {
-  0% {
+  #bush {
+    width: 20px;
+    height: 40px;
+    position: relative;
+    top: 110px;
     left: 580px;
+
+    background-image: url("images/favicon/bush\ 1.jpg");
+    background-size: 20px 40px;
+
+    animation: block 1s infinite linear;
   }
 
-  100% {
-    left: -20px;
-  }
-}
+  @keyframes block {
+    0% {
+      left: 580px;
+    }
 
-/*
-  Screen reader text utility class
-*/
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
+    100% {
+      left: -20px;
+    }
+  }
+
+  /*
+    Screen reader text utility class
+  */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
