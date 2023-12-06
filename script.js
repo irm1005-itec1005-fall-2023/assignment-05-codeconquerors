@@ -7,22 +7,22 @@ function showNextInstruction() {
     const currentStep = document.getElementById(`step-${currentInstruction}`);
     currentStep.style.display = "none";
 
-    // Display the next step or start game if all steps are completed
+    // Move to the next step
     currentInstruction++;
 
+    // Display the next step or start game if all steps are completed
     const nextStep = document.getElementById(`step-${currentInstruction}`);
     if (nextStep) {
         nextStep.style.display = "block";
     } else {
         // If there is no next step, hide the "Next" button
         document.getElementById("next-btn").style.display = "none";
-
+        
         // Show the "Now you can start!" section with the start button
         document.getElementById("hellokitty").style.display = "block";
         document.getElementById("start-btn").style.display = "block";
     }
 }
-
 
 function startAdventure() {
     // Add functionality for starting the adventure
