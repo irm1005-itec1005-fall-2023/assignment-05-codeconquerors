@@ -1,79 +1,176 @@
-.game {
-    width: 600px;
-    height: 200px;
-    border: 1px solid black;
-    margin: auto;
-  }
+@font-face {
+  font-family: 'Boldins';
+  src: url(fonts/Boldins.otf);
+}
 
-  #kitty {
-    width: 50px;
-    height: 50px;
-    background-image: url(images/favicon/kittywalk1.PNG);
-    background-size: 50px 50px;
-    position: relative;
-    top: 150px;
-  }
 
-  .jump {
-    animation: jump 0.3s linear;
-  }
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
 
-  @keyframes jump {
-    0% {
-      top: 150px;
-    }
+#welcome-page {
+  text-align: center;
+  margin-top: 50px;
+}
 
-    30% {
-      top: 130px;
-    }
+h1 {
+  color: #ce1a1a;
+}
 
-    50% {
-      top: 80px;
-    }
+#instructions-container {
+  margin-top: 20px;
+}
 
-    80% {
-      top: 130px;
-    }
+#instruction-text {
+  font-size: 16px;
+  color: #555;
+  font-family: 'Boldins'; 
+}
 
-    100% {
-      top: 150px;
-    }
-  }
+.hellokittyjumping {
+  width: 20px;
+  height: auto;
+  margin-top: 50px;
+}
+#next-btn, #start-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #df0f81;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-top: 20px;
+}
+#next-btn {
+  margin-top: 50px;
+}
 
-  #bush {
-    width: 20px;
-    height: 40px;
-    position: relative;
-    top: 110px;
-    left: 580px;
+#next-btn:hover, #start-btn:hover {
+  background-color: #eb81c4;
+}
 
-    background-image: url("images/favicon/bush\ 1.jpg");
-    background-size: 20px 40px;
+#start-btn {
+  display: none; /* Initially hide the Start Game button */
+  margin: 0 auto; /* Center the button horizontally */
+  margin-top: 20px; /* Adjust the top margin as needed */
+}
 
-    animation: block 1s infinite linear;
-  }
 
-  @keyframes block {
-    0% {
-      left: 580px;
-    }
 
-    100% {
-      left: -20px;
-    }
-  }
 
-  /*
-    Screen reader text utility class
-  */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-  }
+
+
+
+
+
+body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center;
+  background-color: #fff; /* Set your desired background color */
+  margin: 0;
+  padding: 0;
+}
+
+
+header {
+  background-color: #e3576f;
+  padding: 20px 40px;
+  margin-bottom: 60px;
+  text-align: center;
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+header img {
+  margin-right: 20px;
+  width: 60px; /* Adjust the width as needed */
+  height: auto;
+}
+
+
+h1 {
+  margin-right: 500px;
+  color: #ffffff;
+  font-family:'Boldins';
+  margin: 0 auto; /* Center the button horizontally */
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+
+#welcome-container, #game-container {
+  position: relative;
+}
+
+
+#start-btn {
+  font-size: 18px;
+  padding: 12px 20px;
+  cursor: pointer;
+  background-color: #e3576f;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+
+#board {
+  background-image: url('./background.jpg');
+  background-color: #f0f0f0;
+  border: 2px solid #ffffff;
+  display: block;
+  margin: 0 auto;
+  background-size: cover;
+  border-radius: 6px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6); /* Adjust the values as needed */
+}
+
+
+#score {
+  background-color: #e3576f;
+  color: white;
+  position: absolute;
+  top: 200px;
+  left: 10px;
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 60px;
+}
+
+
+#game-over {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  background-color: #e3576f;
+  color: white;
+  padding: 20px;
+  border: 2px solid #ffffff;
+  border-radius: 60px;
+}
+
+
+#restart-btn {
+  align-items: center;
+  background-color: #e3576f;
+  color: white;
+  display: none;
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  border-radius: 60px;
+}

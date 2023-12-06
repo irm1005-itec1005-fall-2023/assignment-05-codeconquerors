@@ -1,16 +1,67 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Document Title</title>
+    <title>Kitty's Adventure</title>
     <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div class="game">
-      <div id="kitty"></div>
-      <div id="bush"></div>
+</head>
+<body>
+    <!-- Welcome Page with Instructions -->
+    <div id="welcome-page">
+        <h1>Welcome to Kitty's Adventure!</h1>
+
+        <div id="instructions-container">
+            <div id="step-1" class="instruction-step">
+                <p class="instruction-text">Welcome to Kitty's Adventure!</p>
+                <section id="hellokittyhi">
+                    <img src="./hello-kitty-hi.gif" alt="hello kitty waving" width="200">
+                </section>
+            </div>
+
+            <div id="step-2" class="instruction-step" style="display: none;">
+                <p class="instruction-text">Step 1: To make Kitty jump, press the space bar.</p>
+                <section id="hellokittyjump">
+                  <img src="./hellokitty.gif" alt="hello kitty jumping" width="200">
+              </section>
+            </div>
+
+            <div id="step-3" class="instruction-step" style="display: none;">
+                <p class="instruction-text">Step 2: Help Kitty get home by jumping over the bushes.</p>
+                <section id="hellokittyhome">
+                  <img src="./hello-kitty-hug.gif" alt="hello kitty hugging" width="200">
+              </section>
+            </div>
+
+            <div id="step-4" class="instruction-step" style="display: none;">
+              <p class="instruction-text">Step 3: The game starts over when Kitty hits a bush, so avoid them!</p>
+              <section id="hellokittyhome">
+                <img src="./falls.gif" alt="hello kitty falling" width="200">
+            </section>
+          </div>
+
+            <section id="hellokitty" style="display: none;">
+              <p>Now you can start! Good luck!</p>
+              <button id="start-btn" style="display:none;" onclick="startAdventure()">Start Game</button>
+            </section>
+
+            <button id="next-btn" onclick="showNextInstruction()">Next</button>
+        </div>
     </div>
+
+    <!-- Game Container (hidden initially) -->
+    <div id="game-container" style="display:none;">
+        <header>
+            <img src="./logo.png" alt="Kitty Logo" width="50">
+            <h1>Kitty's Adventure</h1>
+        </header>
+
+        <canvas id="board"></canvas>
+        <div id="score">score: <span id="score-value">0</span></div>
+        <div id="game-over"> you failed...! <span id="final-score"></span></div>
+        <button id="restart-btn" onclick="restartGame()">Restart</button>
+    </div>
+
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
