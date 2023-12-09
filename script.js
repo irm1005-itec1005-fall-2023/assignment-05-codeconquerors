@@ -17,7 +17,7 @@ function showNextInstruction() {
     } else {
         // If there is no next step, hide the "Next" button
         document.getElementById("next-btn").style.display = "none";
-        
+
         // Show the "Now you can start!" section with the start button
         document.getElementById("hellokitty").style.display = "block";
         document.getElementById("start-btn").style.display = "block";
@@ -34,30 +34,25 @@ function restartGame() {
     console.log("Game restarted!");
 }
 
-
-
-let standImg = new Image();
-standImg.src = "./stand.png";
-
 let walkImg = new Image();
 walkImg.src = "./walk.png";
 
 let kitty = {
     x: 50,
-    y: 170,
+    y: 120,
     width: 130,
     height: 140,
     jumping: false,
     jumpHeight: 200,
     jumpCount: 0,
-    img: standImg // Set the initial image to stand.png
+    img: walkImg // Set the initial image to walk.png
 };
 
 let bush = {
     x: 800,
     y: 220,
     width: 130,
-    height: 110
+    height: 140
 };
 
 let bushImg = new Image();
@@ -76,6 +71,7 @@ let context;
 // Background music
 let backgroundMusic = new Audio("./song.mp3");
 
+// Window.onload
 window.onload = function () {
     board = document.getElementById("board");
     board.width = 700;
@@ -84,20 +80,18 @@ window.onload = function () {
 
     document.addEventListener("keydown", jumpKitty);
 
-    // Load the kitty and bush images
-    kitty.img.onload = function () {
-        requestAnimationFrame(update);
+    // Load the walk image
+    walkImg.onload = function () {
+        // Load the bush image after the walk image has loaded
+        bushImg.onload = function () {
+            // Start background music
+            backgroundMusic.play();
+            // Start the game loop
+            requestAnimationFrame(update);
+        };
+        bushImg.src = "./bush.png";
     };
-    bushImg.onload = function () {
-        requestAnimationFrame(update);
-    };
-
-    // Start the game with the stand image
-    kitty.img.src = standImg.src;
-    bushImg.src = "./bush.png";
-
-    // Start background music
-    backgroundMusic.play();
+    walkImg.src = "./walk.png";
 };
 
 function startAdventure() {
@@ -114,14 +108,14 @@ function initGame() {
     // Set up your game canvas and context
     board = document.getElementById("board");
     board.width = 700;
-    board.height = 300;
+    board.height = 320;
     context = board.getContext("2d");
 
-    // Load the kitty and bush images
-    kitty.img.onload = function () {
+    // Load the walk and bush images
+    walkImg.onload = function () {
         requestAnimationFrame(update);
     };
-    kitty.img.src = "./kittyrun.png";
+    walkImg.src = "./walk.png";
 
     bushImg.onload = function () {
         requestAnimationFrame(update);
@@ -187,8 +181,8 @@ function jumpKitty(event) {
         kitty.jumping = true;
         velocityY = 9; // Initial jump velocity
 
-        // Change the kitty image to "walk.png"
-        kitty.img.src = walkImg.src;
+        // Change the kitty image to walk.png
+        kitty.img = walkImg;
     }
 }
 
@@ -229,5 +223,5 @@ function restartGame() {
     backgroundMusic.currentTime = 0;
     backgroundMusic.play();
 
-    update();
+    requestAnimationFrame(update);
 }
